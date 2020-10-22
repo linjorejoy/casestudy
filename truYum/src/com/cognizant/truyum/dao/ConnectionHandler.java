@@ -15,7 +15,7 @@ public class ConnectionHandler {
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
 		try {
-			FileInputStream fis = new FileInputStream("connection.properties");
+			FileInputStream fis = new FileInputStream("C:\\Users\\877973\\Desktop\\Works\\truyum\\truYum\\src\\connection.properties");
 			props.load(fis);
 
 			Class.forName(props.getProperty("driver"));

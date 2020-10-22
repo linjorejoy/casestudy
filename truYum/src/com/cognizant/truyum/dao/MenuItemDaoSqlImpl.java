@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,13 +26,13 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				long id = resultSet.getLong(0);
-				String name = resultSet.getString(1);
-				float price = resultSet.getFloat(2);
-				boolean active = resultSet.getInt(3)==1;
-				Date dateOfLaunch = resultSet.getDate(4);
-				String category = resultSet.getString(5);
-				boolean freeDelivery = resultSet.getInt(6)==1;
+				long id = resultSet.getLong(1);
+				String name = resultSet.getString(2);
+				float price = resultSet.getFloat(3);
+				boolean active = resultSet.getInt(4)==1;
+				Date dateOfLaunch = resultSet.getDate(5);
+				String category = resultSet.getString(6);
+				boolean freeDelivery = resultSet.getInt(7)==1;
 				MenuItem item = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 				menuItemsList.add(item);
 			}
@@ -59,13 +60,13 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				long id = resultSet.getLong(0);
-				String name = resultSet.getString(1);
-				float price = resultSet.getFloat(2);
-				boolean active = resultSet.getInt(3)==1;
-				Date dateOfLaunch = resultSet.getDate(4);
-				String category = resultSet.getString(5);
-				boolean freeDelivery = resultSet.getInt(6)==1;
+				long id = resultSet.getLong(1);
+				String name = resultSet.getString(2);
+				float price = resultSet.getFloat(3);
+				boolean active = resultSet.getInt(4)==1;
+				Date dateOfLaunch = resultSet.getDate(5);
+				String category = resultSet.getString(6);
+				boolean freeDelivery = resultSet.getInt(7)==1;
 				MenuItem item = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 				menuItemsList.add(item);
 			}
@@ -87,14 +88,17 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "UPDATE MENU_ITEMS SET NAME = '?', PRICE = ?, ACTIVE = ?, DATEOFLAUNCH = '?'"
-					+ ", CATEGORY = '?', FREEDELIVERY = ? WHERE ID = ?;";
+			String query = "UPDATE MENU_ITEMS SET item_name = '?', PRICE = ?, ACTIVE = ?, DATEOFLAUNCH = '?', CATEGORY = '?', FREEDELIVERY = ? WHERE ID = ?;";
 			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			java.sql.Date thisDate = java.sql.Date.valueOf(format.format(menuItem.getDateOfLaunch()));
+			System.out.println(thisDate);
 			preparedStatement = connection.prepareStatement(query);
+			
 			preparedStatement.setString(1, menuItem.getName());
 			preparedStatement.setFloat(2, menuItem.getPrice());
 			preparedStatement.setBoolean(3, menuItem.isActive());
-			preparedStatement.setDate(4, (java.sql.Date) menuItem.getDateOfLaunch());
+			preparedStatement.setString(4, format.format(menuItem.getDateOfLaunch()));
 			preparedStatement.setString(5, menuItem.getCategory());
 			preparedStatement.setBoolean(6, menuItem.isFreeDelivery());
 			preparedStatement.setLong(7, menuItem.getId());
@@ -129,13 +133,13 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				long id = resultSet.getLong(0);
-				String name = resultSet.getString(1);
-				float price = resultSet.getFloat(2);
-				boolean active = resultSet.getInt(3)==1;
-				Date dateOfLaunch = resultSet.getDate(4);
-				String category = resultSet.getString(5);
-				boolean freeDelivery = resultSet.getInt(6)==1;
+				long id = resultSet.getLong(1);
+				String name = resultSet.getString(2);
+				float price = resultSet.getFloat(3);
+				boolean active = resultSet.getInt(4)==1;
+				Date dateOfLaunch = resultSet.getDate(5);
+				String category = resultSet.getString(6);
+				boolean freeDelivery = resultSet.getInt(7)==1;
 				menuItem = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 				break;
 			}
