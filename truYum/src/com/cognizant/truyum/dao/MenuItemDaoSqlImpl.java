@@ -16,7 +16,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 	@Override
 	public List<MenuItem> getMenuItemListAdmin() {
-		// TODO Auto-generated method stub
 		List<MenuItem> menuItemsList = new ArrayList<>();
 		try {
 			Connection connection = ConnectionHandler.getConnection();
@@ -38,10 +37,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			}
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -50,7 +47,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 	@Override
 	public List<MenuItem> getMenuItemListCustomer() {
-		// TODO Auto-generated method stub
 		List<MenuItem> menuItemsList = new ArrayList<>();
 		try {
 			Connection connection = ConnectionHandler.getConnection();
@@ -72,10 +68,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			}
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -84,7 +78,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 	@Override
 	public void modifyMenuItem(MenuItem menuItem) {
-		// TODO Auto-generated method stub
 
 		try {
 			Connection connection = ConnectionHandler.getConnection();
@@ -111,10 +104,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -122,7 +113,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 	@Override
 	public MenuItem getMenuItem(long menuItemId) {
-		// TODO Auto-generated method stub
 		MenuItem menuItem = null;
 		try {
 			Connection connection = ConnectionHandler.getConnection();
@@ -145,10 +135,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			}
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

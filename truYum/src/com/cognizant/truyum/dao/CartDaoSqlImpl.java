@@ -12,15 +12,15 @@ public class CartDaoSqlImpl implements CartDao {
 	
 	@Override
 	public void addCartItem(long userId, long menuItemId) {
-		// TODO Auto-generated method stub
+
 		try {
 			Connection connection = ConnectionHandler.getConnection();
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -28,13 +28,13 @@ public class CartDaoSqlImpl implements CartDao {
 
 	@Override
 	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public void removeCartItem(long userId, long menuItemId) {
-		// TODO Auto-generated method stub
+
 		
 	}
 

@@ -9,7 +9,7 @@ public class CartDaoCollectionImplTest {
 	public static CartDao cartDao = new CartDaoCollectionImpl();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		testAddCartItem();
 		System.out.println();
 		testGetAllCartItems();
@@ -18,7 +18,7 @@ public class CartDaoCollectionImplTest {
 	}
 
 	private static void testRemoveCartItem() {
-		// TODO Auto-generated method stub
+
 		cartDao.removeCartItem(1, 1);
 		List<MenuItem> cartItemList;
 		try {
@@ -33,26 +33,26 @@ public class CartDaoCollectionImplTest {
 
 	private static void testGetAllCartItems() {
 
-		// TODO Auto-generated method stub
+
 		try {
 			List<MenuItem> allCartItems = cartDao.getAllCartItems(1);
 			allCartItems.forEach(System.out::println);
 		} catch (CartEmptyException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 	}
 
 	private static void testAddCartItem() {
-		// TODO Auto-generated method stub
+
 
 		cartDao.addCartItem(1, 1);
 		try {
 			List<MenuItem> cartItemList = cartDao.getAllCartItems(1);
 			cartItemList.forEach(System.out::println);
 		} catch (CartEmptyException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}

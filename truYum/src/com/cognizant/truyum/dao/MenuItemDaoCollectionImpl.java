@@ -14,7 +14,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 	public MenuItemDaoCollectionImpl() {
 		super();
 		List<MenuItem> newList = new ArrayList<>();
-		if (this.menuItemList == null) {
+		if (menuItemList == null) {
 			
 			// Including Sample Data
 			
@@ -36,7 +36,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 	public MenuItemDaoCollectionImpl(List<MenuItem> menuItemList) {
 
 		super();
-		this.menuItemList = menuItemList;
+		MenuItemDaoCollectionImpl.menuItemList = menuItemList;
 	}
 
 	public List<MenuItem> getMenuItemList() {
@@ -46,12 +46,12 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
 	public void setMenuItemList(List<MenuItem> menuItemList) {
 
-		this.menuItemList = menuItemList;
+		MenuItemDaoCollectionImpl.menuItemList = menuItemList;
 	}
 
 	public List<MenuItem> getMenuItemListAdmin() {
 
-		return this.menuItemList;
+		return menuItemList;
 	}
 
 	
@@ -59,7 +59,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 		List<MenuItem> customerItemList = new ArrayList<>();
 		Date currDate = new DateUtil().convertToDate("20/10/2020");
 		
-		for(MenuItem item : this.menuItemList) {
+		for(MenuItem item : menuItemList) {
 			if(item.isActive() && currDate.after(item.getDateOfLaunch())){
 				customerItemList.add(item);
 			}
@@ -69,7 +69,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
 	public void modifyMenuItem(MenuItem menuItem) {
 
-		for (MenuItem eachItem : this.menuItemList) {
+		for (MenuItem eachItem : menuItemList) {
 			if (menuItem.equals(eachItem)) {
 				eachItem.setId(menuItem.getId());
 				eachItem.setName(menuItem.getName());
@@ -87,7 +87,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
 	public MenuItem getMenuItem(long menuItemId) {
 
-		for (MenuItem menuItem : this.menuItemList) {
+		for (MenuItem menuItem : menuItemList) {
 			if (menuItem.getId() == menuItemId) {
 				return menuItem;
 			}
