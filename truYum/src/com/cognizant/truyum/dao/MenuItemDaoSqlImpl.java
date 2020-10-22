@@ -54,7 +54,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			preparedStatement = connection.prepareStatement(query);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
-
+			
 			while (resultSet.next()) {
 				long id = resultSet.getLong(1);
 				String name = resultSet.getString(2);
@@ -81,13 +81,13 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "UPDATE MENU_ITEMS SET item_name = '?', PRICE = ?, ACTIVE = ?, DATEOFLAUNCH = '?', CATEGORY = '?', FREEDELIVERY = ? WHERE ID = ?;";
+			String query = "UPDATE MENU_ITEMS SET item_name = ?, PRICE = ?, ACTIVE = ?, DATEOFLAUNCH = ?, CATEGORY = ?, FREEDELIVERY = ? WHERE ID = ?";
 			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			java.sql.Date thisDate = java.sql.Date.valueOf(format.format(menuItem.getDateOfLaunch()));
-			System.out.println(thisDate);
+//			System.out.println(thisDate);
 			preparedStatement = connection.prepareStatement(query);
-			
+			preparedStatement.clearParameters();
 			preparedStatement.setString(1, menuItem.getName());
 			preparedStatement.setFloat(2, menuItem.getPrice());
 			preparedStatement.setBoolean(3, menuItem.isActive());
@@ -96,7 +96,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			preparedStatement.setBoolean(6, menuItem.isFreeDelivery());
 			preparedStatement.setLong(7, menuItem.getId());
 			
-			if(preparedStatement.execute()) {
+			if(preparedStatement.executeUpdate() > 0) {
 				System.out.println("Query Successful");
 			}else {
 				System.out.println("Query Unsuccessful");

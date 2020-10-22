@@ -10,7 +10,7 @@ public class MenuItemDaoSqlImplTest {
 	private static MenuItemDaoSqlImpl menuItemDao = new MenuItemDaoSqlImpl();
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		testGetMenuItemListAdmin();
 		System.out.println();
 		testGetMenuItemListCustomer();
@@ -21,13 +21,11 @@ public class MenuItemDaoSqlImplTest {
 	
 	public static void testGetMenuItemListAdmin() {
 		List<MenuItem> itemAdminList = menuItemDao.getMenuItemListAdmin();
-//		System.out.println(itemAdminList);
 		itemAdminList.forEach(System.out::println);
 	}
 	
 	public static void testGetMenuItemListCustomer() {
 		List<MenuItem> itemCustomerList = menuItemDao.getMenuItemListCustomer();
-//		System.out.println(itemAdminList);
 		itemCustomerList.forEach(System.out::println);
 	}
 
