@@ -50,7 +50,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		List<MenuItem> menuItemsList = new ArrayList<>();
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "SELECT * FROM MENU_ITEMS WHERE ACTIVE = TRUE AND dateOfLaunch < now()";
+			String query = "SELECT * FROM MENU_ITEMS WHERE ACTIVE = TRUE AND date_Of_Launch < now()";
 			preparedStatement = connection.prepareStatement(query);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -81,11 +81,9 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "UPDATE MENU_ITEMS SET item_name = ?, PRICE = ?, ACTIVE = ?, DATEOFLAUNCH = ?, CATEGORY = ?, FREEDELIVERY = ? WHERE ID = ?";
+			String query = "UPDATE MENU_ITEMS SET item_name = ?, PRICE = ?, ACTIVE = ?, DATE_OF_LAUNCH = ?, CATEGORY = ?, FREE_DELIVERY = ? WHERE ID = ?";
 			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			java.sql.Date thisDate = java.sql.Date.valueOf(format.format(menuItem.getDateOfLaunch()));
-//			System.out.println(thisDate);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.clearParameters();
 			preparedStatement.setString(1, menuItem.getName());
@@ -123,7 +121,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 
 			ResultSet resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				long id = resultSet.getLong(1);
 				String name = resultSet.getString(2);
 				float price = resultSet.getFloat(3);
@@ -132,7 +130,6 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 				String category = resultSet.getString(6);
 				boolean freeDelivery = resultSet.getInt(7)==1;
 				menuItem = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
-				break;
 			}
 
 		} catch (ClassNotFoundException e) {
