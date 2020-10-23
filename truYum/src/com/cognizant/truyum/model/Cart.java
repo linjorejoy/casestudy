@@ -10,7 +10,12 @@ public class Cart {
 		super();
 		this.menuItemList = menuItemList;
 	}
-	
+
+	public Cart(List<MenuItem> menuItemList, double total) {
+		super();
+		this.menuItemList = menuItemList;
+		this.total = total;
+	}
 	public List<MenuItem> getMenuItemList() {
 		return menuItemList;
 	}
