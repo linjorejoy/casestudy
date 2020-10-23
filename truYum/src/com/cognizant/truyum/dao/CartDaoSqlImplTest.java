@@ -22,7 +22,7 @@ public class CartDaoSqlImplTest {
 	
 	public static void testAddCartItem() {
 		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
-		cartDaoImpl.addCartItem(1, 1);
+		cartDaoImpl.addCartItem(2, 2);
 		cartDaoImpl.addCartItem(1, 2);
 		cartDaoImpl.addCartItem(2, 2);
 		cartDaoImpl.addCartItem(2, 3);

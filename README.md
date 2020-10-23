@@ -40,13 +40,13 @@
 
 |Field| Type|Null|Key|Default|Extra|
 |---|---|---|---|---|---|
-|id|int(11)|NO|PRI|1||
+|id|int(11)|NO|PRI|NULL|auto_increment|
 |item_name|varchar(45)|NO||NULL||
 |price|float|NO||NULL||
 |active|tinyint(4)|NO||NULL||
 |date_of_launch|date|NO||NULL||
 |category|varchar(45)|NO||NULL||
-|free_delivery|varchar(45)|NO||NULL||  
+|free_delivery|tinyint(4)|NO||NULL||  
 
 <br>
 <br>
@@ -55,7 +55,7 @@
 
 |Field| Type|Null|Key|Default|Extra|
 |---|---|---|---|---|---|
-|user_id|int(11)|NO|PRI|NULL||
+|user_id|int(11)|NO|PRI|NULL|auto-increment|
 |user_name|varchar(45)|NO||NULL||
 
 <br>
@@ -65,7 +65,7 @@
 
 |Field| Type|Null|Key|Default|Extra|
 |---|---|---|---|---|---|
-|cart_id|int(11)|NO|PRI|0||
+|cart_id|int(11)|NO|PRI|NULL|auto_increment|
 |ct_user_id|int(11)|YES|MUL|NULL||
 |ct_menu_id|int(11)|YES|MUL|NULL||
 
