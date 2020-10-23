@@ -44,6 +44,28 @@ public class CartDaoSqlImplTest {
 	}
 	
 	public static void testRemoveCartItem() {
-		
+		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
+		long userId = 1;
+		System.out.println("\nBefore Delelting");
+		try {
+			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
+				System.out.println(item);
+			}
+		} catch (CartEmptyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		long menuItemId = 1;
+		cartDaoImpl.removeCartItem(userId, menuItemId);
+		System.out.println("\nAfter Delelting");
+		try {
+			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
+				System.out.println(item);
+			}
+		} catch (CartEmptyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println();
 	}
 }

@@ -20,17 +20,16 @@ public class CartDaoSqlImpl implements CartDao {
 		try {
 			
 			Connection connection = ConnectionHandler.getConnection();
-			String query1 = "select count(ct_id) from cart";
+			String query1 = "select max(ct_id) as max from cart";
 			PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
 			ResultSet resultSet = preparedStatement1.executeQuery();
 			int count = 0;
 			while(resultSet.next()) {
-				count = resultSet.getInt(1);
+				count = resultSet.getInt("max");
 			}
 			String query = "INSERT INTO CART(CT_ID, CT_USER_ID, CT_MENU_ID) VALUES (?, ?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-			preparedStatement.setLong(1, (count + 1));
+			preparedStatement.setLong(1, count+1);
 			preparedStatement.setLong(2, userId);
 			preparedStatement.setLong(3, menuItemId);
 			
