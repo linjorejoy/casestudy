@@ -116,9 +116,10 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		MenuItem menuItem = null;
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "SELECT * FROM MENU_ITEMS WHERE ID = ? ;";
-			preparedStatement.setLong(1, menuItemId);
+			String query = "SELECT * FROM MENU_ITEMS WHERE ID =?";
 			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setLong(1, menuItemId);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
 
