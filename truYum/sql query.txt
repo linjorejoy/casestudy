@@ -1,1 +1,1 @@
-insert into USER(USER_NAME) values('Tony Stark'),('Steve Rogers'),('Stephen Strange'),('Peter Parker');
+insert into USER(user_id, USER_NAME) values(1, 'Tony Stark'),(2, 'Steve Rogers'),(3, 'Thor Odinson'),(4, 'Stephen Strange'),(5, 'Peter Parker');
