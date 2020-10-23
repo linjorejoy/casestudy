@@ -1,0 +1,1 @@
+insert into USER(USER_NAME) values('Tony Stark'),('Steve Rogers'),('Stephen Strange'),('Peter Parker');

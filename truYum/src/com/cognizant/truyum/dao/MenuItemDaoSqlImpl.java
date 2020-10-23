@@ -19,7 +19,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		List<MenuItem> menuItemsList = new ArrayList<>();
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "SELECT * FROM MENU_ITEMS;";
+			String query = "SELECT * FROM MENU_ITEMS";
 			preparedStatement = connection.prepareStatement(query);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -50,7 +50,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		List<MenuItem> menuItemsList = new ArrayList<>();
 		try {
 			Connection connection = ConnectionHandler.getConnection();
-			String query = "SELECT * FROM MENU_ITEMS WHERE ACTIVE = TRUE AND dateOfLaunch < now();";
+			String query = "SELECT * FROM MENU_ITEMS WHERE ACTIVE = TRUE AND dateOfLaunch < now()";
 			preparedStatement = connection.prepareStatement(query);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
