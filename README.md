@@ -71,5 +71,5 @@
 
 <br>
 
-> CART.ct_user_id = user.user_id  
-> CART.ct_menu_id = menu_item.id
+> CART.ct_user_id = USER.user_id  
+> CART.ct_menu_id = MENU_ITEMS.id
