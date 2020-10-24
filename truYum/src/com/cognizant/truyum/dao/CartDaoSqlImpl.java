@@ -31,6 +31,7 @@ public class CartDaoSqlImpl implements CartDao {
 			}else {
 				System.out.println("Query Unsuccessful");
 			}
+			preparedStatement.clearParameters();
 			
 		} catch (ClassNotFoundException e) {
 
@@ -69,7 +70,7 @@ public class CartDaoSqlImpl implements CartDao {
 				MenuItem menuItem = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 				menuItemList.add(menuItem);
 			}
-			
+			preparedStatement.clearParameters();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -99,6 +100,7 @@ public class CartDaoSqlImpl implements CartDao {
 			}else {
 				System.out.println("Query Unsuccessful");
 			}
+			preparedStatement.clearParameters();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
